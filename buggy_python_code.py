@@ -1,6 +1,7 @@
 import urllib
-import yaml
 import flask
+import yaml
+
 
 app = flask.Flask(__name__)
 
@@ -11,7 +12,7 @@ def index():
     url = flask.request.args.get("url")
     return fetch_website(version, url)
 
-        
+
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
 class Person(object):
     def __init__(self, name):
@@ -38,7 +39,8 @@ def load_yaml(filename):
     stream = open(filename)
     deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
     return deserialized_data
-    
+
+
 def authenticate(password):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
@@ -55,8 +57,8 @@ if __name__ == '__main__':
         new_person = Person("Vickie")
         print_nametag(input("Please format your nametag: "), new_person)
     elif choice == "2":
-        urlib_version = input("Choose version of urllib: ")
-        fetch_website(urlib_version, url="https://www.google.com")
+        urllib_version = input("Choose version of urllib: ")
+        fetch_website(urllib_version, url="https://www.google.com")
     elif choice == "3":
         load_yaml(input("File name: "))
         print("Executed -ls on current folder")
